@@ -1,10 +1,11 @@
 import style from "../styles/uploadBox.module.scss";
-import {CardImg} from "react-bootstrap";
+import {CardImage} from "react-bootstrap-icons";
 
 const UploadBox = () => {
     return ( 
         <div className={style.box}>
-            <CardImg className={style.h}/>
+            <CardImage className={style.icon}/>
+            <button className={style.btn}>upload a file</button>
         </div>
      );
 }

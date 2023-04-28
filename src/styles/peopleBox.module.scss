@@ -1,0 +1,14 @@
+@import "../more/globalStyle";
+.box {
+    height: 80vh;
+    width: 48%;
+    position: absolute;
+    top: 50%;
+    left: 99%;
+    transform: translate(-100%, -50%);
+    @include glassy-box-white(4px, 0.4);
+}
+
+.title {
+    text-align: center;
+}

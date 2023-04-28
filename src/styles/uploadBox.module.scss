@@ -1,16 +1,42 @@
 @import "../more/globalStyle";
 .box {
     height: 80vh;
-    width: 50%;
-    background-color: #aaa;
+    width: 48%;
     position: absolute;
     top: 50%;
+    left: 1%;
     transform: translate(0%, -50%);
-    @include glassy-box-black(2px, 0.4)
+    @include glassy-box-black(2px, 0.4);
 }
 
-.h {
-    font-size: 50px;
-    height: 300px;
-    width: 300px;
+@media screen and (max-width: 519px) {
+    .box {
+        @include center(1);
+        width: 90vw;
+        height: 90vh;
+    }
+}
+
+.icon {
+    height: 50%;
+    width: 50%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    font-size: 30px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
 }
