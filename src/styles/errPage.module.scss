@@ -1,0 +1,12 @@
+@import "../more/globalStyle";
+.box {
+    height: 80vh;
+    width: 80vw;
+    background-color: $glassy-white;
+    @include center(1);
+    @include glassy-box-white(4px, 0.4);
+}
+
+.title {
+    text-align: center;
+}

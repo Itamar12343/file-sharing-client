@@ -1,0 +1,22 @@
+@mixin center($scale) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale($scale);
+}
+
+$glassy-black: rgb(0, 0, 0, 0.6);
+$glassy-white: rgb(255, 255, 255, 0.6);
+@mixin glassy-box-white($blur, $opacity) {
+    background-color: rgb(255, 255, 255, $opacity);
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+    border-radius: 20px;
+}
+
+@mixin glassy-box-black($blur, $opacity) {
+    background-color: rgb(0, 0, 0, $opacity);
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+    border-radius: 20px;
+}
