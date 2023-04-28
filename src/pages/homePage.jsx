@@ -1,8 +1,10 @@
+import UploadBox from "../components/uploadBox";
+
 const HomePage = () => {
     return ( 
-        <div className="">
-        
-        </div>
+        <>
+          <UploadBox/>
+        </>
      );
 }
  
