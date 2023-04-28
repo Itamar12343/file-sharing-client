@@ -1,11 +1,8 @@
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect("https://file-sharing-server-p3vj.onrender.com");
 const ManageServer = () => {
 
-    socket.on("h", data =>{
-        console.log(data);
-    });
-
+    
     return ( 
         <>
         
