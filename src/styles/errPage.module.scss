@@ -11,15 +11,28 @@
     text-align: center;
 }
 
-.btn {
-    @include center(1);
+@mixin btn {
     font-size: 46px;
     border: 2px solid rgb(191, 225, 255);
     border-radius: 10px;
     padding: 10px;
-    background-color: rgb(191, 225, 255);
+    background-color: transparent;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.btn {
+    @include center(1);
+    @include btn;
+}
+
+.btn:hover {
+    background-color: rgb(191, 225, 255)
+}
+
+.btn-active {
+    @include center(0.5);
+    @include btn;
 }
 
 @media screen and (max-width: 464px) {
