@@ -18,7 +18,7 @@
     }
 }
 
-.icon {
+@mixin icon {
     height: 80%;
     width: 80%;
     position: relative;
@@ -27,6 +27,16 @@
     transform: translate(-50%, -50%);
     color: #fff;
     cursor: pointer;
+    transition: 0.3s
+}
+
+.icon {
+    @include icon;
+}
+
+.icon-active {
+    @include icon;
+    transform: translate(-50%, -50%) scale(0.5);
 }
 
 @mixin btn {
