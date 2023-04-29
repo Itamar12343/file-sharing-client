@@ -12,3 +12,9 @@
 .title {
     text-align: center;
 }
+
+@media screen and (max-width: 356px) {
+    .title {
+        font-size: 20px;
+    }
+}

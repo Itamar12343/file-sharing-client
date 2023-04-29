@@ -9,14 +9,6 @@
     @include glassy-box-black(2px, 0.4);
 }
 
-@media screen and (max-width: 519px) {
-    .box {
-        @include center(1);
-        width: 90vw;
-        height: 90vh;
-    }
-}
-
 .icon {
     height: 50%;
     width: 50%;
@@ -26,6 +18,13 @@
     transform: translate(-50%, -50%);
     color: #fff;
     cursor: pointer;
+}
+
+@media screen and (max-width: 477px) {
+    .icon {
+        height: 100px;
+        width: 100px;
+    }
 }
 
 .btn {
