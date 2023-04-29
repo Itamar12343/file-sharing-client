@@ -6,7 +6,7 @@
     top: 50%;
     left: 1%;
     transform: translate(0%, -50%);
-    @include glassy-box-black(2px, 0.4);
+    @include glassy-box-black(4px, 0.4);
 }
 
 @media screen and (max-width: 757px) {
@@ -19,25 +19,54 @@
 }
 
 .icon {
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 80%;
     position: relative;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%, -50%);
     color: #fff;
     cursor: pointer;
 }
 
-.btn {
+@mixin btn {
     position: absolute;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -90%);
     font-size: 30px;
-    background-color: #fff;
+    background-color: #b1c9f8;
     border: none;
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
+    width: 80%;
+    transition: 0.2s;
+    border: 2px solid #b1c9f8;
+}
+
+.btn {
+    @include btn;
+}
+
+.btn-active {
+    @include btn;
+    background-color: transparent;
+    transform: translate(-50%, -90%) scale(1.2);
+}
+
+@media screen and (max-width: 346px) {
+    .btn {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .box {
+        height: 60%;
+    }
+}
+
+input {
+    display: none;
 }

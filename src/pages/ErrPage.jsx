@@ -27,7 +27,7 @@ const ErrPage = () => {
     return ( 
         <div className={style.box}>
             <h1 className={style.title}>Page Not Found</h1>
-            <button className={isBtnClicked === false ? style.btn : style["btn-active"]} onClick={btnClicked}>go back</button>
+            <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClicked}>go back</button>
         </div>
      );
 }
