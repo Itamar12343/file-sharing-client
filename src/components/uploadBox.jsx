@@ -6,6 +6,7 @@ import {motion} from "framer-motion";
 const UploadBox = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
     const [isIconClicked, setIsIconClicked] = useState(false);
+    const [file, setFile] = useState();
     const inputRef = useRef(null);
 
     function btnClick(){
@@ -36,11 +37,28 @@ const UploadBox = () => {
         inputRef.current.click();
     }
 
+    function getFile(e){
+        const input = e.target;
+        const reader = new FileReader();
+        reader.readAsDataURL(input.files[0]);
+        reader.onload = ()=>{
+            setFile({
+                file: reader.result,
+                name: input.files[0].name,
+                type: input.files[0].name.split(".").pop()
+            });
+        }
+    }
+
     return ( 
         <div className={style.box}>
-            <CardImage className={ isIconClicked ? style["icon-active"] : style.icon} onClick={iconClick}/>
-            <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClick}>upload a file</button>
-            <input type="file" ref={inputRef}/>
+            {!file && <CardImage className={ isIconClicked ? style["icon-active"] : style.icon} onClick={iconClick}/>}
+            {file && <div className={style.display}>
+            <div className={style["display-img"]} style={{backgroundImage: `url(${file.file})`}}></div>
+            <p className={style.text}>This file cannot be viewed</p>
+            </div>}
+            <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClick}>Upload a file</button>
+            <input className={style.input} type="file" ref={inputRef} onChange={getFile}/>
         </div>
      );
 }
