@@ -47,6 +47,7 @@ const UploadBox = () => {
                 name: input.files[0].name,
                 type: input.files[0].name.split(".").pop()
             });
+            
         }
     }
 

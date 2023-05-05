@@ -12,7 +12,6 @@ const HomePage = () => {
     return ( 
         <>
           <UploadBox/>
-          {width > 757 && <PeopleBox/>}
         </>
      );
 }
