@@ -14,6 +14,9 @@ const Check = () => {
                 spinerRef.current.style.animationPlayState = "running";
                 setTimeout(() => {
                     checkBlockRef.current.style.animationPlayState = "running";
+                    setTimeout(() => {
+                        checkBoxRef.current.style.transform = "translate(-50%, -50%) scale(0)";
+                    }, 1000);
                 }, 1000);
             }, 100);
         }, 1000);

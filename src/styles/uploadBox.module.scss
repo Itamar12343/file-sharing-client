@@ -4,6 +4,15 @@
     width: 500px;
     @include center(1);
     @include glassy-box-black(4px, 0.4);
+    transition: 0.3s;
+}
+
+.hide-box {
+    height: 400px;
+    width: 500px;
+    @include center(0);
+    @include glassy-box-black(4px, 0.4);
+    transition: 0.3s;
 }
 
 @media screen and (max-width: 535px) {

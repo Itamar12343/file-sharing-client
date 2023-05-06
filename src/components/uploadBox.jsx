@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
 import style from "../styles/uploadBox.module.scss";
 import {CardImage} from "react-bootstrap-icons";
-import {motion} from "framer-motion";
+import Check from "../components/check";
 
 const UploadBox = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
     const [isIconClicked, setIsIconClicked] = useState(false);
+    const [isCheckAnimation, setIsCheckAnimation] = useState(false);
     const [file, setFile] = useState();
     const inputRef = useRef(null);
 
@@ -48,19 +49,29 @@ const UploadBox = () => {
                 type: input.files[0].name.split(".").pop()
             });
             
+            setTimeout(() => {
+                startCheckAnimation();
+            }, 1000);
         }
     }
 
+    function startCheckAnimation(){
+        setIsCheckAnimation(true);
+    }
+
     return ( 
-        <div className={style.box}>
-            {!file && <CardImage className={ isIconClicked ? style["icon-active"] : style.icon} onClick={iconClick}/>}
-            {file && <div className={style.display}>
-            <div className={style["display-img"]} style={{backgroundImage: `url(${file.file})`}}></div>
-            <p className={style.text}>This file cannot be viewed</p>
-            </div>}
-            <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClick}>Upload a file</button>
-            <input className={style.input} type="file" ref={inputRef} onChange={getFile}/>
-        </div>
+         <>
+        <div className={isCheckAnimation ? style["hide-box"] : style.box}>
+               {!file && <CardImage className={ isIconClicked ? style["icon-active"] : style.icon} onClick={iconClick}/>}
+               {file && <div className={style.display}>
+               <div className={style["display-img"]} style={{backgroundImage: `url(${file.file})`}}></div>
+               <p className={style.text}>This file cannot be viewed</p>
+               </div>}
+               <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClick}>Upload a file</button>
+               <input className={style.input} type="file" ref={inputRef} onChange={getFile}/>
+           </div>
+        {isCheckAnimation && <Check/>}
+        </>
      );
 }
  

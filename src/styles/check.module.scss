@@ -1,16 +1,23 @@
 .check-box {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     background-color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scale(0);
-    border-radius: 10px;
+    border-radius: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.3s;
+}
+
+@media screen and (max-width: 338px) {
+    .check-box {
+        height: 36%;
+        width: 80%;
+    }
 }
 
 .check {
