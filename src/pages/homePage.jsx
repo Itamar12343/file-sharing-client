@@ -1,17 +1,13 @@
 import { useState } from "react";
-import PeopleBox from "../components/peopleBox";
 import UploadBox from "../components/uploadBox";
+import Check from "../components/check";
 
 const HomePage = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  window.onresize = ()=>{
-    setWidth(window.innerWidth);
-  }
 
     return ( 
         <>
           <UploadBox/>
+          <Check/>
         </>
      );
 }
