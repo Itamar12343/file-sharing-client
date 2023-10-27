@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import style from "../styles/uploadBox.module.scss";
 import {CardImage} from "react-bootstrap-icons";
 import Check from "../components/check";
+import {useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const UploadBox = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
@@ -9,6 +11,8 @@ const UploadBox = () => {
     const [isCheckAnimation, setIsCheckAnimation] = useState(false);
     const [file, setFile] = useState();
     const inputRef = useRef(null);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function btnClick(){
         btnClickAnimation();
@@ -48,9 +52,17 @@ const UploadBox = () => {
                 name: input.files[0].name,
                 type: input.files[0].name.split(".").pop()
             });
+
+            const fileForRedux = {
+                file: reader.result,
+                name: input.files[0].name,
+                type: input.files[0].name.split(".").pop()
+            }
+            setFileReducer(fileForRedux);
             
             setTimeout(() => {
                 startCheckAnimation();
+                goToPeopleRout();
             }, 1000);
         }
     }
@@ -58,6 +70,17 @@ const UploadBox = () => {
     function startCheckAnimation(){
         setIsCheckAnimation(true);
     }
+
+    function setFileReducer(file){
+        dispatch({type: "setFile", file})
+    }
+
+    function goToPeopleRout(){
+        setTimeout(() => {
+            navigate("/send-to");
+        }, 4000);
+    }
+
 
     return ( 
          <>
