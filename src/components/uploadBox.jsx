@@ -44,17 +44,29 @@ const UploadBox = () => {
 
     function getFile(e){
         const input = e.target;
+
+        if(input.files[0].name.split(".").pop() == "png" || input.files[0].name.split(".").pop() == "jpeg" || input.files[0].name.split(".").pop() == "jpg"){
+
         const reader = new FileReader();
         reader.readAsDataURL(input.files[0]);
         reader.onload = ()=>{
+            
             setFile({
                 file: reader.result,
                 name: input.files[0].name,
                 type: input.files[0].name.split(".").pop()
             });
+        }
+    }else{
+        setFile({
+            file: input.files[0],
+            name: input.files[0].name,
+            type: input.files[0].name.split(".").pop()
+        });
+    }
 
             const fileForRedux = {
-                file: reader.result,
+                file: input.files[0],
                 name: input.files[0].name,
                 type: input.files[0].name.split(".").pop()
             }
@@ -64,7 +76,6 @@ const UploadBox = () => {
                 startCheckAnimation();
                 goToPeopleRout();
             }, 1000);
-        }
     }
 
     function startCheckAnimation(){
