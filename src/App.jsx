@@ -1,7 +1,7 @@
 import {Route,Routes, BrowserRouter} from "react-router-dom";
 import HomePage from "./pages/homePage";
 import ErrPage from "./pages/ErrPage";
-import Check from "./components/check";
+import PeopleBox from "./components/peopleBox";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
        <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="*" element={<ErrPage/>}/>
-          <Route path="h" element={<Check/>}/>
+          <Route path="send-to" element={<PeopleBox/>}/>
        </Routes>
     </BrowserRouter>
     </>

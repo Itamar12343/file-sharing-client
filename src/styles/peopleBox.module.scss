@@ -1,14 +1,32 @@
 @import "../more/globalStyle";
 .box {
-    height: 80vh;
-    width: 48%;
-    position: absolute;
-    top: 50%;
-    left: 99%;
-    transform: translate(-100%, -50%);
+    height: 500px;
+    width: 800px;
+    @include center(1);
     @include glassy-box-white(4px, 0.4);
 }
 
 .title {
     text-align: center;
+}
+
+@media screen and (max-width: 949px) {
+    .box {
+        height: 70vh;
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 672px) {
+    .box {
+        height: 70vh;
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 402px) {
+    .title {
+        font-size: 24px;
+        margin-top: 30px;
+    }
 }
