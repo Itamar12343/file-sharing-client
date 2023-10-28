@@ -50,13 +50,26 @@
     transform: translate(-50%, -90%);
     font-size: 30px;
     background-color: #b1c9f8;
-    border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px;
     cursor: pointer;
     width: 80%;
     transition: 0.2s;
     border: 2px solid #b1c9f8;
+    background: linear-gradient(to right, #f9a8a8, #fdf29b, #98d2fc);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    border-radius: 20px;
+    cursor: pointer;
+    width: 80%;
+    transition: 0.2s;
+    background: linear-gradient(to right, #f9a8a8, #fdf29b, #98d2fc);
 }
 
 .btn {
@@ -65,8 +78,8 @@
 
 .btn-active {
     @include btn;
-    background-color: transparent;
-    transform: translate(-50%, -90%) scale(1.2);
+    background: linear-gradient(to right, #98d2fc, #f9a8a8, #fdf29b);
+    transform: translate(-50%, -90%) scale(0.6);
 }
 
 @media screen and (max-width: 346px) {
