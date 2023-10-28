@@ -56,20 +56,24 @@
     width: 80%;
     transition: 0.2s;
     border: 2px solid #b1c9f8;
-    background: linear-gradient(to right, #f9a8a8, #fdf29b, #98d2fc);
+    background-color: transparent;
+    overflow: hidden;
+    //background: linear-gradient(to right, #f9a8a8, #fdf29b, #98d2fc);
 }
 
-.btn::before {
-    content: '';
+@mixin btn-background {
     position: absolute;
-    top: 90%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -90%);
-    border-radius: 20px;
+    border-radius: 18px;
     cursor: pointer;
-    width: 80%;
+    width: 700px;
+    height: 400px;
     transition: 0.2s;
     background: linear-gradient(to right, #f9a8a8, #fdf29b, #98d2fc);
+    z-index: -1;
+    transform: translate(-50%, -50%);
 }
 
 .btn {
@@ -78,8 +82,17 @@
 
 .btn-active {
     @include btn;
-    background: linear-gradient(to right, #98d2fc, #f9a8a8, #fdf29b);
+    //background: linear-gradient(to right, #98d2fc, #f9a8a8, #fdf29b);
     transform: translate(-50%, -90%) scale(0.6);
+}
+
+.btn-background {
+    @include btn-background;
+}
+
+.btn-background-active {
+    @include btn-background;
+    transform: translate(-30%, -50%);
 }
 
 @media screen and (max-width: 346px) {
