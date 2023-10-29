@@ -1,0 +1,9 @@
+@import "../more/globalStyle";
+.box {
+    @include center(1);
+}
+
+.btn {
+    margin: 20px;
+    font-size: 50px;
+}
