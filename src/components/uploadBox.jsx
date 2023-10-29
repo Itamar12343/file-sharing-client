@@ -102,7 +102,6 @@ const UploadBox = () => {
                <p className={style.text}>This file cannot be viewed</p>
                </div>}
                <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClick}>Upload a file
-               <div className={isBtnClicked ? style["btn-background-active"] : style["btn-background"]}></div>
                </button>
                <input className={style.input} type="file" ref={inputRef} onChange={getFile}/>
            </div>

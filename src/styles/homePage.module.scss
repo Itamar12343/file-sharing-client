@@ -4,6 +4,82 @@
 }
 
 .btn {
+    height: 150px;
+    width: 300px;
     margin: 20px;
-    font-size: 50px;
+    font-size: 40px;
+    text-align: center;
+    padding: 10;
+    cursor: pointer;
+}
+
+.p {
+    position: relative;
+    z-index: 10;
+    padding: 0;
+    color: #fff;
+}
+
+@mixin before {
+    content: '';
+    position: absolute;
+    left: -8%;
+    top: 26%;
+    //background: linear-gradient(to right, #f87c7c, #8affde, #77a0ff);
+    background-color: #f64646;
+    height: 60%;
+    width: 120%;
+    animation: spin 2s infinite linear;
+    //box-shadow: 0 0 60px 10px #f64646;
+}
+
+@mixin after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background-color: rgb(33, 33, 33);
+    border-radius: 10px;
+}
+
+.share {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    box-shadow: 0 0 60px 10px #5e5c5c;
+}
+
+.receive {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    box-shadow: 0 0 60px 10px #5e5c5c;
+}
+
+.share::before {
+    @include before;
+}
+
+.receive::before {
+    @include before;
+}
+
+.share::after {
+    @include after;
+}
+
+.receive::after {
+    @include after;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
