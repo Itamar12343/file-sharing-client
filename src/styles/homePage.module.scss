@@ -26,7 +26,6 @@
     left: -8%;
     top: 26%;
     //background: linear-gradient(to right, #f87c7c, #8affde, #77a0ff);
-    background-color: #f64646;
     height: 60%;
     width: 120%;
     animation: spin 2s infinite linear;
@@ -48,6 +47,7 @@
     background-color: rgb(33, 33, 33);
     border: none;
     box-shadow: 0 0 60px 10px #5e5c5c;
+    transition: 0.2s;
 }
 
 .receive {
@@ -57,14 +57,39 @@
     background-color: rgb(33, 33, 33);
     border: none;
     box-shadow: 0 0 60px 10px #5e5c5c;
+    transition: 0.2s;
+}
+
+.share-active {
+    transform: scale(0.5);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    box-shadow: 0 0 60px 10px #5e5c5c;
+    transition: 0.2s;
+}
+
+.receive-active {
+    transform: scale(0.5);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgb(33, 33, 33);
+    border: none;
+    box-shadow: 0 0 60px 10px #5e5c5c;
+    transition: 0.2s;
 }
 
 .share::before {
     @include before;
+    background-color: #67f678;
 }
 
 .receive::before {
     @include before;
+    background-color: #f64646;
 }
 
 .share::after {
