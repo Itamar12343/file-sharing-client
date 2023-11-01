@@ -41,8 +41,8 @@ const HomePage = () => {
     return ( 
       <>
         <div className={style.box}>
-          {mode == "normal" && <button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></button>}
-          {mode == "normal" && <button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></button>}
+          {mode == "normal" && <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>}
+          {mode == "normal" && <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>}
         </div>
 
         {mode == "share" && <UploadBox/>}
