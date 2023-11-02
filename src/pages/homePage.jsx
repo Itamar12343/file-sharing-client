@@ -15,12 +15,20 @@ const HomePage = () => {
   function clicked(btn){
     if(btn == "share"){
      shareA();
-     setMode("share");
+
+     setTimeout(() => {
+       setMode("share");
+     }, 1000);
+
     }
 
     if(btn == "receive"){
       receiveA();
-      setMode("receive");
+
+      setTimeout(() => {
+        setMode("receive");
+      }, 1000);
+
     }
   }
 
@@ -28,26 +36,30 @@ const HomePage = () => {
     setShareAnimation(true);
     setTimeout(() => {
       setShareAnimation(false);
-    }, 500);
+    }, 300);
   }
 
   function receiveA(){
     setReceiveAnimation(true);
       setTimeout(() => {
         setReceiveAnimation(false);
-      }, 500);
+      }, 300);
   }
 
     return ( 
       <>
         <div className={style.box}>
-          {mode == "normal" && <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>}
-          {mode == "normal" && <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>}
+          <motion.button animate = {{opacity: mode == "normal"? 1 : 0, display: mode == "normal" ? "inline" : "none"}} initial = {{opacity:1}} transition={{duration: 2}} onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>
+          <motion.button animate = {{opacity: mode == "normal"? 1 : 0, display: mode == "normal" ? "inline" : "none"}} initial = {{opacity:1}} transition={{duration: 2}} onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>
         </div>
 
-        {mode == "share" && <UploadBox/>}
-        {mode == "receive" && <Receive/>}
+        <motion.div animate = {{opacity: mode == "share" ? 1 : 0, display: mode == "share" ? "block" : "none"}} initial = {{opacity:0, display: "none"}} transition={{duration: 1.5}}>
+          <UploadBox/>
+        </motion.div>
 
+        <motion.div animate = {{opacity: mode == "receive" ? 1 : 0, display: mode == "receive" ? "block" : "none"}} initial = {{opacity:0, display: "none"}} transition={{duration: 1.5}}>
+          <Receive/>
+        </motion.div>
         </>
      );
 }

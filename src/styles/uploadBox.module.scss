@@ -66,6 +66,10 @@
     @include btn;
 }
 
+.btn:hover {
+    background-color: rgb(255, 255, 255, 0.2);
+}
+
 .btn-active {
     @include btn;
     //background: linear-gradient(to right, #98d2fc, #f9a8a8, #fdf29b);
