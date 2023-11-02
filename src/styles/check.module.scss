@@ -1,7 +1,7 @@
 .check-box {
     height: 200px;
     width: 200px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(61, 58, 58);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -22,7 +22,7 @@
 
 .check {
     font-size: 100px;
-    color: rgb(137, 255, 145);
+    color: rgb(229, 236, 229);
 }
 
 .spiner {
@@ -41,7 +41,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: rgb(61, 58, 58);
     height: 100px;
     width: 100px;
     animation: unblock-check 0.5s paused;
