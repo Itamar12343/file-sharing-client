@@ -1,6 +1,9 @@
 @import "../more/globalStyle";
 .box {
     @include center(1);
+    background-color: #78b9eb;
+    width: 100vw;
+    text-align: center;
 }
 
 .btn {
@@ -11,6 +14,13 @@
     text-align: center;
     padding: 10;
     cursor: pointer;
+}
+
+@media screen and (max-width: 344px) {
+    .btn {
+        transform: scale(0.8);
+        margin: 0px;
+    }
 }
 
 .p {

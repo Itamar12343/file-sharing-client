@@ -60,6 +60,7 @@ const HomePage = () => {
         <motion.div animate = {{opacity: mode == "receive" ? 1 : 0, display: mode == "receive" ? "block" : "none"}} initial = {{opacity:0, display: "none"}} transition={{duration: 1.5}}>
           <Receive/>
         </motion.div>
+
         </>
      );
 }
