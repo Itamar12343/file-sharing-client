@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import style from "../styles/uploadBox.module.scss";
 import {CardImage} from "react-bootstrap-icons";
 import Check from "../components/check";
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {motion} from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const UploadBox = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
@@ -14,6 +15,17 @@ const UploadBox = () => {
     const inputRef = useRef(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
+
+    useEffect(()=>{
+        if(location.state == null){
+            navigate("/");
+        }else{
+            window.history.replaceState({}, document.title)        }
+    });
+   
+
 
     function btnClick(){
         btnClickAnimation();
@@ -89,7 +101,7 @@ const UploadBox = () => {
 
     function goToPeopleRout(){
         setTimeout(() => {
-            navigate("/send-to");
+            navigate("/send-to", {state: {success: true}});
         }, 4000);
     }
 
