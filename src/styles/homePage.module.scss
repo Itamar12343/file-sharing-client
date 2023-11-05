@@ -1,7 +1,6 @@
 @import "../more/globalStyle";
 .box {
     @include center(1);
-    background-color: #78b9eb;
     width: 100vw;
     text-align: center;
 }
@@ -20,7 +19,7 @@
     .btn {
         transform: scale(0.8);
         margin: 0px;
-        width: 90%;
+        width: 100%;
     }
 }
 
