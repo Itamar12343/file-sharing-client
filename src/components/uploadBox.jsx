@@ -4,6 +4,7 @@ import {CardImage} from "react-bootstrap-icons";
 import Check from "../components/check";
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {motion} from "framer-motion";
 
 const UploadBox = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
@@ -95,7 +96,7 @@ const UploadBox = () => {
 
     return ( 
          <>
-        <div className={isCheckAnimation ? style["hide-box"] : style.box}>
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className={isCheckAnimation ? style["hide-box"] : style.box}>
                {!file && <CardImage className={ isIconClicked ? style["icon-active"] : style.icon} onClick={iconClick}/>}
                {file && <div className={style.display}>
                <div className={style["display-img"]} style={{backgroundImage: `url(${file.file})`}}></div>
@@ -104,7 +105,7 @@ const UploadBox = () => {
                <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClick}>Upload a file
                </button>
                <input className={style.input} type="file" ref={inputRef} onChange={getFile}/>
-           </div>
+           </motion.div>
         {isCheckAnimation && <Check/>}
         </>
      );

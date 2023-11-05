@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "../styles/errPage.module.scss";
 import {useNavigate} from "react-router-dom"
+import {motion} from "framer-motion";
 
 const ErrPage = () => {
     const navigate = useNavigate();
@@ -25,10 +26,10 @@ const ErrPage = () => {
     }
 
     return ( 
-        <div className={style.box}>
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className={style.box}>
             <h1 className={style.title}>Page Not Found</h1>
             <button className={isBtnClicked ? style["btn-active"] : style.btn} onClick={btnClicked}>go back</button>
-        </div>
+        </motion.div>
      );
 }
  
