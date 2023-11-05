@@ -1,8 +1,7 @@
 import style from "../styles/homePage.module.scss";
-import UploadBox from "../components/uploadBox";
-import Receive from "../components/receive";
 import { useState } from "react";
 import {motion} from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
 
@@ -10,6 +9,8 @@ const HomePage = () => {
   const [receiveAnimation, setReceiveAnimation] = useState(false);
 
   const [mode, setMode] = useState("normal");
+  const navigate = useNavigate();
+
 
 
   function clicked(btn){
@@ -17,6 +18,7 @@ const HomePage = () => {
      shareA();
 
      setTimeout(() => {
+       navigate("upload-files");
        setMode("share");
      }, 1000);
 
@@ -26,6 +28,7 @@ const HomePage = () => {
       receiveA();
 
       setTimeout(() => {
+        navigate("receive-files");
         setMode("receive");
       }, 1000);
 
@@ -52,11 +55,6 @@ const HomePage = () => {
           <motion.button animate = {{opacity: mode == "normal"? 1 : 0, display: mode == "normal" ? "inline" : "none"}} initial = {{opacity:1}} transition={{duration: 2}} onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>
           <motion.button animate = {{opacity: mode == "normal"? 1 : 0, display: mode == "normal" ? "inline" : "none"}} initial = {{opacity:1}} transition={{duration: 2}} onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>
         </motion.div>
-
-          {mode == "share" && <UploadBox/>}
-
-          {mode == "receive" && <Receive/>}
-
         </>
      );
 }

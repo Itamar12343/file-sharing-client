@@ -23,6 +23,12 @@
     }
 }
 
+@media screen and (max-width: 237px) {
+    .btn {
+        font-size: 30px;
+    }
+}
+
 .p {
     position: relative;
     z-index: 10;

@@ -8,6 +8,18 @@
                             overflow-x: hidden;
                             background-color: #292727;
                         }
+                        
+                        @keyframes start {
+                            0% {
+                                background-color: #ca5757;
+                            }
+                            50% {
+                                background-color: rgb(91, 206, 79);
+                            }
+                            100% {
+                                background-color: #292727;
+                            }
+                        }
                         /* width */
                         
                          ::-webkit-scrollbar {
