@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {motion} from "framer-motion";
 import { useLocation } from "react-router-dom";
+import Login from "./login";
 
 const UploadBox = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
@@ -16,13 +17,21 @@ const UploadBox = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+    const [askLogin, setAskLogin] = useState(false);
 
 
     useEffect(()=>{
         if(location.state == null){
             navigate("/");
         }else{
-            window.history.replaceState({}, document.title)        }
+            window.history.replaceState({}, document.title);       
+        }
+
+        if(localStorage.getItem("username") == null){
+            setTimeout(() => {
+                setAskLogin(true);
+            }, 1000);
+        }
     });
    
 
@@ -105,7 +114,6 @@ const UploadBox = () => {
         }, 4000);
     }
 
-
     return ( 
          <>
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className={isCheckAnimation ? style["hide-box"] : style.box}>
@@ -119,6 +127,8 @@ const UploadBox = () => {
                <input className={style.input} type="file" ref={inputRef} onChange={getFile}/>
            </motion.div>
         {isCheckAnimation && <Check/>}
+
+        {askLogin && <Login/>}
         </>
      );
 }

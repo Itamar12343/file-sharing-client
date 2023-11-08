@@ -4,6 +4,7 @@ import ErrPage from "./pages/ErrPage";
 import PeopleBox from "./components/peopleBox";
 import UploadBox from "./components/uploadBox";
 import Receive from "./components/receive";
+import Login from "./components/login";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="send-to" element={<PeopleBox/>}/>
           <Route path="upload-files" element={<UploadBox/>}/>
           <Route path="receive-files" element={<Receive/>}/>
+          <Route path="login" element={<Login/>}/>
        </Routes>
     </BrowserRouter>
     </>

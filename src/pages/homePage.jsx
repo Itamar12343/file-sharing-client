@@ -8,8 +8,6 @@ const HomePage = () => {
 
   const [shareAnimation, setShareAnimation] = useState(false);
   const [receiveAnimation, setReceiveAnimation] = useState(false);
-  const [askLogin, setAskLogin] = useState(false);
-  const username = localStorage.getItem("username");
 
   const [mode, setMode] = useState("normal");
   const navigate = useNavigate();
@@ -19,29 +17,15 @@ const HomePage = () => {
   function clicked(btn){
 
     if(btn == "share"){
-     if(username == null){
-      openLogin();
-    }else{
       navigateTo("upload");     
-    }
-    shareA();
+      shareA();
     }
 
     if(btn == "receive"){
-      if(username == null){
-        openLogin();
-      }else{
         navigateTo("receive");
-    }
-    receiveA();
+       receiveA();
     }
 
-  }
-
-  function openLogin(){
-    setTimeout(() => {
-      setAskLogin(true);
-    }, 1000);
   }
 
   function navigateTo(to){
@@ -79,8 +63,6 @@ const HomePage = () => {
           <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>
           <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>
         </motion.div>
-
-        {askLogin && <Login/>}
         </>
      );
 }

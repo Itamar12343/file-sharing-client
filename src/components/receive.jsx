@@ -2,18 +2,28 @@ import style from "../styles/receive.module.scss";
 import {motion} from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Login from "./login";
 
 const Receive = () => {
    
    const navigate = useNavigate();
    const location = useLocation();
+   const [askLogin, setAskLogin] = useState(false);
+
 
    useEffect(()=>{
       if(location.state == null){
           navigate("/");
       }else{
-          window.history.replaceState({}, document.title)        }
+          window.history.replaceState({}, document.title);       
+          }
+
+      if(localStorage.getItem("username") == null){
+          setTimeout(() => {
+             setAskLogin(true);
+         }, 1000);
+      }
   });
 
 
@@ -25,6 +35,8 @@ const Receive = () => {
                <div className={style.card}>no files</div>
             </div>
         </motion.div>
+
+        {askLogin && <Login/>}
         </>
      );
 }
