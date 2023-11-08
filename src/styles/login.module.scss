@@ -50,15 +50,11 @@
     //background: linear-gradient(#fff, #aaa, rgb(88, 183, 243));
     transition: 0.3s;
     background: transparent;
-    border: 2px solid #2b2828
+    border: 2px solid #d6cccc;
 }
 
 .btn {
     @include btn;
-}
-
-.btn:hover {
-    box-shadow: 0 0 60px 10px #1c1b1b;
 }
 
 .btn-active {
