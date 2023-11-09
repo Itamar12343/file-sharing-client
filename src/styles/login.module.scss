@@ -41,20 +41,33 @@
 
 @mixin btn {
     font-size: 30px;
-    margin: 10px;
-    border-radius: 10px;
+    margin: 20px;
+    border-radius: 50%;
     border: none;
     text-align: center;
-    padding: 6px;
+    padding: 0px;
     cursor: pointer;
     //background: linear-gradient(#fff, #aaa, rgb(88, 183, 243));
     transition: 0.3s;
     background: transparent;
-    border: 2px solid #d6cccc;
+    border: 2px solid #fff;
+    color: #fff;
+    height: 60px;
+    width: 60px;
 }
 
 .btn {
     @include btn;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.check {
+    font-size: 36px;
 }
 
 .btn-active {
