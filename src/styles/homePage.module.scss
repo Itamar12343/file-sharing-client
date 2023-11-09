@@ -15,6 +15,55 @@
     cursor: pointer;
 }
 
+@mixin name-btns {
+    color: #fff;
+    border: 2px solid #898989;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.change-name {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    @include name-btns;
+}
+
+.remove-name {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    @include name-btns;
+}
+
+@media screen and (max-width: 342px) {
+    .remove-name {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        margin-top: 10px;
+        display: block;
+    }
+    .change-name {
+        position: relative;
+        display: block;
+        left: 50%;
+        transform: translate(-50%);
+        margin-top: 10px;
+        display: block;
+    }
+    .nameBtn-box {
+        width: 100vw;
+        text-align: center;
+        position: absolute;
+        top: 0;
+    }
+}
+
 @media screen and (max-width: 344px) {
     .btn {
         transform: scale(0.8);

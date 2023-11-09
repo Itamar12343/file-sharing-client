@@ -1,15 +1,13 @@
 import style from "../styles/homePage.module.scss";
-import { useState } from "react";
 import {motion} from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Login from "../components/login";
+import { useState } from "react";
 
 const HomePage = () => {
 
   const [shareAnimation, setShareAnimation] = useState(false);
   const [receiveAnimation, setReceiveAnimation] = useState(false);
 
-  const [mode, setMode] = useState("normal");
   const navigate = useNavigate();
 
 
@@ -32,13 +30,11 @@ const HomePage = () => {
     if(to == "receive"){
       setTimeout(() => {
         navigate("receive-files", {state: {access:true}});
-        setMode("receive");
       }, 1000);
     }
     if(to == "upload"){
       setTimeout(() => {
         navigate("upload-files", {state: {access: true}});
-        setMode("share");
       }, 1000);
     }
   }
@@ -63,6 +59,10 @@ const HomePage = () => {
           <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>
           <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>
         </motion.div>
+        <div className={style["nameBtn-box"]}>
+          <button className={style["change-name"]}>change name</button>
+          <button className={style["remove-name"]}>remove name</button>
+        </div>
         </>
      );
 }
