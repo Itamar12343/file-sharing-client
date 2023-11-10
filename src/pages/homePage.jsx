@@ -8,6 +8,8 @@ const HomePage = () => {
   const [shareAnimation, setShareAnimation] = useState(false);
   const [receiveAnimation, setReceiveAnimation] = useState(false);
 
+  const [changeNameAnimation, setChangeNameAnimation] = useState(false);
+  const [removeNameAnimation, setRemoveNameAnimation] = useState(false);
   const navigate = useNavigate();
 
 
@@ -24,6 +26,28 @@ const HomePage = () => {
        receiveA();
     }
 
+    if(btn == "changeName"){
+      changeNameA();
+    }
+
+    if(btn == "removeName"){
+      removeNameA();
+    }
+
+  }
+
+  function changeNameA(){
+    setChangeNameAnimation(true);
+    setTimeout(() => {
+      setChangeNameAnimation(false);
+    }, 300);
+  }
+
+  function removeNameA(){
+    setRemoveNameAnimation(true);
+    setTimeout(() => {
+      setRemoveNameAnimation(false);
+    }, 300);
   }
 
   function navigateTo(to){
@@ -56,12 +80,12 @@ const HomePage = () => {
     return ( 
       <>
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className={style.box}>
-          <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share file</p></motion.button>
-          <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive file</p></motion.button>
+          <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share File</p></motion.button>
+          <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive File</p></motion.button>
         </motion.div>
         <div className={style["nameBtn-box"]}>
-          <button className={style["change-name"]}>change name</button>
-          <button className={style["remove-name"]}>remove name</button>
+          <motion.button style={{transform: changeNameAnimation ? window.innerWidth > 342 ? "scale(0.5)" : "scale(0.5) translate(-50%)" : window.innerWidth > 342 ? "scale(1)" : "scale(1) translate(-50%)", backgroundColor: changeNameAnimation ? "rgb(255,255,255,0.4)" : "transparent"}} onClick={()=> clicked("changeName")} className={style["change-name"]}>change name</motion.button>
+          <motion.button style={{transform: removeNameAnimation ? window.innerWidth > 342 ? "scale(0.5)" : "scale(0.5) translate(-50%)" : window.innerWidth > 342 ? "scale(1)" : "scale(1) translate(-50%)", backgroundColor: removeNameAnimation ? "rgb(255,255,255,0.4)" : "transparent"}} onClick={()=> clicked("removeName")} className={style["remove-name"]}>remove name</motion.button>
         </div>
         </>
      );

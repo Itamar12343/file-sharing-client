@@ -24,6 +24,7 @@
     text-align: center;
     background-color: transparent;
     border-radius: 10px;
+    transition: 0.3s;
 }
 
 .change-name {
@@ -50,7 +51,6 @@
     }
     .change-name {
         position: relative;
-        display: block;
         left: 50%;
         transform: translate(-50%);
         margin-top: 10px;
@@ -134,6 +134,8 @@
     border: none;
     box-shadow: 0 0 60px 10px #5e5c5c;
     transition: 0.2s;
+    background-color: rgb(255, 255, 255, 0.5);
+    transition: 0.2s;
 }
 
 .receive-active {
@@ -144,6 +146,7 @@
     background-color: rgb(33, 33, 33);
     border: none;
     box-shadow: 0 0 60px 10px #5e5c5c;
+    background-color: rgb(255, 255, 255, 0.5);
     transition: 0.2s;
 }
 
