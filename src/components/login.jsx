@@ -3,6 +3,7 @@ import style from "../styles/login.module.scss";
 import {motion} from "framer-motion";
 import {Check} from "react-bootstrap-icons";
 import { X } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -12,6 +13,7 @@ const Login = () => {
     const [closeCheckAnimation, setCloseCheckAnimation] = useState(false);
     const [name, setName] = useState();
     const [closeLogin, setCloseLogin] = useState(false);
+    const navigate = useNavigate();
 
 
     function btnClicked(){
@@ -44,9 +46,9 @@ const Login = () => {
             setTimeout(() => {
                 setCloseLogin(true);
                 setTimeout(() => {
-                    window.location.reload();
+                    navigate("/");
                 }, 500);
-            }, 1000);
+            }, 300);
         }, 300);
     }
 
