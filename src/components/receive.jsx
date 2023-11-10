@@ -22,7 +22,7 @@ const Receive = () => {
       if(localStorage.getItem("username") == null){
           setTimeout(() => {
              setAskLogin(true);
-         }, 1000);
+         }, 500);
       }
   });
 
