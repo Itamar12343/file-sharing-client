@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import style from "../styles/uploadBox.module.scss";
 import {CardImage} from "react-bootstrap-icons";
 import Check from "../components/check";
-import {useDispatch} from "react-redux";
+//import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {motion} from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -14,10 +14,11 @@ const UploadBox = () => {
     const [isCheckAnimation, setIsCheckAnimation] = useState(false);
     const [file, setFile] = useState();
     const inputRef = useRef(null);
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
     const [askLogin, setAskLogin] = useState(false);
+    let fileToSend = false;
 
 
     useEffect(()=>{
@@ -66,8 +67,9 @@ const UploadBox = () => {
 
     function getFile(e){
         const input = e.target;
+        const fileType = input.files[0].name.split(".").pop();
 
-        if(input.files[0].name.split(".").pop() == "png" || input.files[0].name.split(".").pop() == "jpeg" || input.files[0].name.split(".").pop() == "jpg"){
+        if(fileType == "png" || fileType == "jpeg" || fileType == "jpg"){
 
         const reader = new FileReader();
         reader.readAsDataURL(input.files[0]);
@@ -78,21 +80,17 @@ const UploadBox = () => {
                 name: input.files[0].name,
                 type: input.files[0].name.split(".").pop()
             });
-        }
-    }else{
-        setFile({
-            file: input.files[0],
-            name: input.files[0].name,
-            type: input.files[0].name.split(".").pop()
-        });
-    }
 
-            const fileForRedux = {
+        }
+    }
+            
+            fileToSend = {
                 file: input.files[0],
                 name: input.files[0].name,
                 type: input.files[0].name.split(".").pop()
             }
-            setFileReducer(fileForRedux);
+        
+            //qsetFileReducer(fileForRedux);
             
             setTimeout(() => {
                 startCheckAnimation();
@@ -104,13 +102,13 @@ const UploadBox = () => {
         setIsCheckAnimation(true);
     }
 
-    function setFileReducer(file){
+    /*function setFileReducer(file){
         dispatch({type: "setFile", file})
-    }
+    }*/
 
     function goToPeopleRout(){
         setTimeout(() => {
-            navigate("/send-to", {state: {success: true}});
+            navigate("/send-to", {state: {fileToSend}});
         }, 4000);
     }
 

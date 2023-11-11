@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./login";
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3000");
 
 const Receive = () => {
    
@@ -25,6 +27,11 @@ const Receive = () => {
          }, 500);
       }
   });
+
+
+  function getSocketRooms(){
+    
+  }
 
 
     return ( 
