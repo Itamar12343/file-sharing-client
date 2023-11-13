@@ -30,9 +30,13 @@ const PeopleBox = () => {
 
         sendNameToSocket();
 
-        window.addEventListener("beforeunload",()=>{
-            removeNameFromSocket();
-        });
+        window.addEventListener("beforeunload", handleBeforLoad, {capture:true});
+
+        function handleBeforLoad(event){
+          event.preventDefault();
+          return (event.returnValue = '');
+        }
+
   },[]);
 
 
@@ -42,7 +46,7 @@ const PeopleBox = () => {
   }
 
   function removeNameFromSocket(){
-    socket.emit("remove-name-from-list");
+    socket.emit("remove-name-from-list", userName);
   }
 
 
