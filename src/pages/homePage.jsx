@@ -90,7 +90,7 @@ const HomePage = () => {
     return ( 
       <>
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className={style.box}>
-          <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Share File</p></motion.button>
+          <motion.button onClick={()=>{clicked("share")}} className={`${shareAnimation ? style["share-active"] : style.share} ${style.btn}`}><p className={style.p}>Send File</p></motion.button>
           <motion.button onClick={()=>{clicked("receive")}} className={`${receiveAnimation ? style["receive-active"] : style.receive} ${style.btn}`}><p className={style.p}>Receive File</p></motion.button>
         </motion.div>
         {<motion.div initial={{opacity: 0}} animate={{opacity: userName ? 1 : 0, visibility: userName ? "visible" : "hidden"}} className={style["nameBtn-box"]}>
