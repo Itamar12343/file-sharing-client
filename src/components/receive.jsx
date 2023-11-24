@@ -38,8 +38,8 @@ const Receive = () => {
         <>
          <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className={style.box}>
             <h1 className={style.title}>Receive Files</h1>
-            <div className={style["card-box"]}>
-               <div className={style.card}>no files</div>
+            <div className={style["display-box"]}>
+               <div className={style.card}>waiting for files</div>
             </div>
         </motion.div>
 
