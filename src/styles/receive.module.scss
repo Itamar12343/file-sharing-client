@@ -3,7 +3,7 @@
     height: 500px;
     width: 800px;
     @include center(1);
-    @include glassy-box-white(4px, 0.4);
+    //@include glassy-box-white(4px, 0.4);
 }
 
 .title {
@@ -13,11 +13,12 @@
 
 .display-box {
     height: 80%;
-    width: 80%;
-    background-color: #fff;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.6);
+    @include glassy-box-white(4px, 0.4);
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 60%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
 }
@@ -27,10 +28,21 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    animation: card-animation 2s infinite;
+    transition: 0.3s;
+    color: #fff;
 }
 
-.card:hover {
-    background-color: rgb(255, 255, 255, 0.6);
+@keyframes card-animation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 949px) {
