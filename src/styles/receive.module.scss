@@ -35,6 +35,12 @@
     //box-shadow: 0 0 60px 10px #f64646;
 }
 
+@media screen and (max-width: 337px) {
+    .display-box::before {
+        opacity: 0;
+    }
+}
+
 .display-box::after {
     content: '';
     position: absolute;
