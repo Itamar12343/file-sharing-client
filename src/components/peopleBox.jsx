@@ -16,7 +16,7 @@ const PeopleBox = () => {
 
    useEffect(()=>{
       if(location.state == null){
-          //navigate("/");
+          navigate("/");
       }else{
         file = location.state.fileToSend.file;
 
@@ -29,25 +29,8 @@ const PeopleBox = () => {
           window.history.replaceState({}, document.title);
         }
 
-        sendNameToSocket();
-
-        window.onbeforeunload = confirmExit;
-        function confirmExit() {
-          removeNameFromSocket();
-          return "Some task is in progress. Are you sure, you want to close?";
-        }
 
   },[]);
-
-
-
-  function sendNameToSocket(){
-    socket.emit("add-name-to-list", userName);
-  }
-
-  function removeNameFromSocket(){
-    socket.emit("remove-name-from-list", userName);
-  }
 
 
     return ( 

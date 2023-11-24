@@ -14,13 +14,42 @@
 .display-box {
     height: 80%;
     width: 90%;
-    background-color: rgba(0, 0, 0, 0.6);
-    @include glassy-box-white(4px, 0.4);
+    background-color: rgb(33, 33, 33);
     position: absolute;
     left: 50%;
     top: 60%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
+    overflow: hidden;
+}
+
+.display-box::before {
+    content: '';
+    position: absolute;
+    left: -40%;
+    top: 26%;
+    background: linear-gradient(to right, #f87c7c, #8affde, #77a0ff);
+    height: 60%;
+    width: 200%;
+    animation: spin 2s infinite linear;
+    //box-shadow: 0 0 60px 10px #f64646;
+}
+
+.display-box::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background-color: rgb(33, 33, 33);
+    border-radius: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .card {
@@ -31,6 +60,7 @@
     animation: card-animation 2s infinite;
     transition: 0.3s;
     color: #fff;
+    text-align: center;
 }
 
 @keyframes card-animation {

@@ -15,22 +15,24 @@ const Receive = () => {
 
 
    useEffect(()=>{
-      if(location.state == null){
+      /*if(location.state == null){
           navigate("/");
       }else{
           window.history.replaceState({}, document.title);       
-          }
+          }*/
 
       if(localStorage.getItem("username") == null){
           setTimeout(() => {
              setAskLogin(true);
          }, 500);
       }
+
+      connectToSocket();
   });
 
 
-  function getSocketRooms(){
-    
+  function connectToSocket(){
+    socket.emit("receiverConnect", localStorage.getItem("username"));
   }
 
 
