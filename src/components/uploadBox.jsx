@@ -31,7 +31,7 @@ const UploadBox = () => {
         if(localStorage.getItem("username") == null){
             setTimeout(() => {
                 setAskLogin(true);
-            }, 500);
+            }, 300);
         }
     });
    

@@ -12,6 +12,7 @@ const Receive = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const [askLogin, setAskLogin] = useState(false);
+   const [isConnected, setIsConnected] = useState(false);
 
 
    useEffect(()=>{
@@ -24,15 +25,17 @@ const Receive = () => {
       if(localStorage.getItem("username") == null){
           setTimeout(() => {
              setAskLogin(true);
-         }, 500);
+         }, 300);
       }
 
       connectToSocket();
-  });
+  },[]);
 
 
   function connectToSocket(){
+    if(localStorage.getItem("username")){
     socket.emit("receiverConnect", localStorage.getItem("username"));
+    }
   }
 
 
