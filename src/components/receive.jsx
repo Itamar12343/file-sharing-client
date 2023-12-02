@@ -29,12 +29,22 @@ const Receive = () => {
       }
 
       connectToSocket();
+
+      setInterval(() => {
+        if(isConnected == true){
+            connectToSocket();
+            console.log(isConnected);
+        }
+      }, 1000);
   },[]);
 
 
   function connectToSocket(){
     if(localStorage.getItem("username")){
     socket.emit("receiverConnect", localStorage.getItem("username"));
+    setIsConnected(true);
+    }else{
+        setIsConnected(false);
     }
   }
 
