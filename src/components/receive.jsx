@@ -12,39 +12,42 @@ const Receive = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const [askLogin, setAskLogin] = useState(false);
-   const [isConnected, setIsConnected] = useState(false);
+   let isConnected = false;
 
 
    useEffect(()=>{
-      /*if(location.state == null){
-          navigate("/");
-      }else{
-          window.history.replaceState({}, document.title);       
-          }*/
 
-      if(localStorage.getItem("username") == null){
-          setTimeout(() => {
-             setAskLogin(true);
-         }, 300);
-      }
+          checkIfLogin();
 
-      connectToSocket();
 
-      setInterval(() => {
-        if(isConnected == true){
+      makeSureConnected();
+
+
+  },[]);
+
+  function makeSureConnected(){
+    setInterval(() => {
+        if(isConnected == false){
             connectToSocket();
-            console.log(isConnected);
         }
       }, 1000);
-  },[]);
+  }
 
 
   function connectToSocket(){
     if(localStorage.getItem("username")){
     socket.emit("receiverConnect", localStorage.getItem("username"));
-    setIsConnected(true);
+    isConnected = true;
     }else{
-        setIsConnected(false);
+        isConnected = false;
+    }
+  }
+
+  function checkIfLogin(){
+    if(localStorage.getItem("username") == null){
+        setTimeout(() => {
+           setAskLogin(true);
+       }, 300);
     }
   }
 
