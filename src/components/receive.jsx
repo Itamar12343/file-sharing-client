@@ -1,16 +1,14 @@
 import style from "../styles/receive.module.scss";
 import {motion} from "framer-motion";
-import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./login";
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
 
 const Receive = () => {
-   
+  
+  const socket = io.connect("http://localhost:3000");
    const navigate = useNavigate();
-   const location = useLocation();
    const [askLogin, setAskLogin] = useState(false);
    let isConnected = false;
 
@@ -21,9 +19,16 @@ const Receive = () => {
 
 
       makeSureConnected();
+      socketListeners();
 
 
   },[]);
+
+  function socketListeners(){
+    socket.on("nameError",()=>{
+      console.log("name error");
+    });
+  }
 
   function makeSureConnected(){
     setInterval(() => {
