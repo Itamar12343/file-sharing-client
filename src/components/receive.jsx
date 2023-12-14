@@ -1,6 +1,5 @@
 import style from "../styles/receive.module.scss";
 import {motion} from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./login";
 import io from "socket.io-client";
@@ -8,7 +7,6 @@ import io from "socket.io-client";
 const Receive = () => {
   
   const socket = io.connect("http://localhost:3000");
-   const navigate = useNavigate();
    const [askLogin, setAskLogin] = useState(false);
    let isConnected = false;
 
