@@ -15,9 +15,7 @@ const Receive = () => {
 
    useEffect(()=>{
 
-          checkIfLogin();
-          console.log("connected");
-
+      checkIfLogin();
 
       makeSureConnected();
       socketListeners();
@@ -30,7 +28,6 @@ const Receive = () => {
 
   useEffect(() => {
     return () => {
-      console.log("leave");
       socket.disconnect();
     };
   }, [location.pathname]);
