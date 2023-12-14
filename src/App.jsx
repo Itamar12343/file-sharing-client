@@ -9,7 +9,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-       <Routes>
+       <Routes >
           <Route path="/" element={<HomePage/>}/>
           <Route path="*" element={<ErrPage/>}/>
           <Route path="send-to" element={<PeopleBox/>}/>

@@ -16,13 +16,25 @@ const Receive = () => {
    useEffect(()=>{
 
           checkIfLogin();
+          console.log("connected");
 
 
       makeSureConnected();
       socketListeners();
 
 
+
   },[]);
+
+
+
+  useEffect(() => {
+    return () => {
+      console.log("leave");
+      socket.disconnect();
+    };
+  }, [location.pathname]);
+
 
   function socketListeners(){
     socket.on("nameError",()=>{
