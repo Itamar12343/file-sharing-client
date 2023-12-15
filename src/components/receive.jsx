@@ -34,8 +34,8 @@ const Receive = () => {
 
   function socketListeners(){
     socket.on("nameError",()=>{
-      console.log("name error");
       setLoginErr(true);
+      isConnected = false;
     });
   }
 
@@ -43,6 +43,7 @@ const Receive = () => {
     setInterval(() => {
         if(isConnected == false){
             connectToSocket();
+            console.log("connecting");
         }
       }, 1000);
   }
