@@ -5,7 +5,7 @@ import {Check} from "react-bootstrap-icons";
 import { X } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
 
     const [btnAnimation, setBtnAnimation] = useState(false);
     const [checkAnimation, setCheckAnimation] = useState(false);
@@ -21,7 +21,12 @@ const Login = () => {
     }
 
     function dealWithUserName(){
-        if(name != "" && name != undefined && name != " "){
+        if(name != "" && name != undefined && name != " " && !props.err){
+            localStorage.setItem("username", name);
+            startBtnAnimation();
+        }
+
+        if(name != "" && name != undefined && name != " " && name != localStorage.getItem("username")){
             localStorage.setItem("username", name);
             startBtnAnimation();
         }
@@ -56,7 +61,7 @@ const Login = () => {
         <>
         <motion.div initial={{transform: "scale(0) translate(-50%,-50%)"}} animate={{transform: !closeLogin ? "scale(1) translate(-50%,-50%)" : "scale(0) translate(-50%,-50%)"}} className={style.container}>
         <div className={style.box}>
-            <h1 className={style.title}>Enter your name</h1>
+            <h1 className={style.title}>{props.err ? "Enter a different name" : "Enter your name"}</h1>
             <motion.input onChange={()=> setName(event.target.value)} whileFocus={{border: "4px solid rgb(75, 159, 255)"}} className={style.input} type="text" placeholder="name"/>
             <motion.button style={{backgroundColor: checkAnimation ? "rgb(54, 160, 253)" : "transparent", borderRadius: checkAnimation ? "50%" : "20%"}} className={btnAnimation ? style["btn-active"] : style.btn} onClick={btnClicked}>{checkAnimation ? <div className={style["icon-container"]}><Check className={style.check}/></div> : "ok"}</motion.button>
         </div>

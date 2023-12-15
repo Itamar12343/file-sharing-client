@@ -8,10 +8,9 @@ const Receive = () => {
   
   const socket = io.connect("http://localhost:3000");
    const [askLogin, setAskLogin] = useState(false);
-   let loginErr = false;
+   const [loginErr, setLoginErr] = useState(false);
    let isConnected = false;
 
-   console.log("jhg");
 
    useEffect(()=>{
 
@@ -36,7 +35,7 @@ const Receive = () => {
   function socketListeners(){
     socket.on("nameError",()=>{
       console.log("name error");
-      loginErr = true;
+      setLoginErr(true);
     });
   }
 
@@ -77,6 +76,7 @@ const Receive = () => {
         </motion.div>
 
         {askLogin && <Login/>}
+        {loginErr && <Login err={true}/>}
         </>
      );
 }
